@@ -1,0 +1,517 @@
+@import './keyframes';
+@import './mixins.scss';
+
+//images screen one
+@import './img_base64/screen-one__plate425.scss';
+@import './img_base64/logo-bingo.scss';
+
+@import './img_base64/cakes.scss';
+@import './img_base64/cakes-left.scss';
+@import './img_base64/cakes-right.scss';
+
+@import './img_base64/waffles.scss';
+@import './img_base64/waffles-left.scss';
+@import './img_base64/waffles-right.scss';
+
+@import './img_base64/trash.scss';
+@import './img_base64/trash-left.scss';
+@import './img_base64/trash-right.scss';
+
+@import './img_base64/win.scss';
+@import './img_base64/lose.scss';
+
+@import './img_base64/screen-one__cat.scss';
+@import './img_base64/screen-one__cat-hand.scss';
+
+@import './img_base64/screen-one__maindish.scss';
+@import './img_base64/screen-one__maindish-left.scss';
+@import './img_base64/screen-one__maindish-right.scss';
+
+// images screen two
+@import './img_base64/screen-two.scss';
+@import './img_base64/screen-two__repeat-bg.scss';
+
+@import './img_base64/screen-two__logo-bingo.scss';
+@import './img_base64/screen-two__table.scss';
+
+
+@import './img_base64/screen-two__woman.scss';
+@import './img_base64/screen-two__cat.scss';
+
+@import './img_base64/play-now.scss';
+@import './img_base64/play-now-push.scss';
+@import './img_base64/replay.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+@media (max-width: 425px) {
+  #screen-one,
+  #screen-two {
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+
+    &.display-no {
+      opacity: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+  }
+
+  #screen-one {
+    @include position;
+
+    position: fixed;
+    height: 100%;
+    background: linear-gradient(0deg, #474562 50%, #356d71 50%);
+    overflow: hidden;
+
+    .screen-one__plates {
+      // background-image: url('/img/screen-one__plates425.png');
+      @include screen-one__plates425;
+      @include bg;
+
+      max-width: 100%;
+      height: 100vh;
+      background-size: contain;
+      z-index: 1;
+    }
+
+    .screen-one__logo-bingo {
+      @include position;
+      // background: url('/img/logo-bingo.png');
+      @include logo-bingo;
+      @include bg;
+      
+      position: absolute;
+      height: 100vh;
+
+      overflow: hidden;
+      background-size: 100%;
+      z-index: 3;
+    }
+
+    #clicker-left,
+    #clicker,
+    #clicker-right {
+      position: fixed;
+      transform: translateX(-50%) translateY(-50%);
+      z-index: 6;
+    }
+
+    #clicker {
+      top: calc(50% + 30px);
+      left: 50%;
+      width: 150px;
+      height: 90px;
+    }
+
+    #clicker-left {
+      top: calc(50% - 45px);
+      left: calc(50% - 90px);
+      width: 130px;
+      height: 80px;
+    }
+
+    #clicker-right {
+      top: calc(50% - 45px);
+      left: calc(50% + 90px);
+      width: 130px;
+      height: 80px;
+    }
+
+    .screen-one__plates-with-dishes {
+      .screen-one__maindish,
+      .screen-one__maindish-left,
+      .screen-one__maindish-right {
+        @include position;
+        @include bg;
+
+        position: absolute;
+        height: 100%;
+        background-size: 100%;
+        transition: top 0.2s ease-in-out;
+        cursor: pointer;
+        z-index: 4;
+
+        &.open {
+          top: -100px;
+        }
+      }
+
+      .screen-one__maindish {
+        @include screen-one__maindish;
+        // background-image: url('/img/screen-one__maindish.png');
+        @include bg;
+        background-size: 100%;
+      }
+
+      .screen-one__maindish-left {
+        @include screen-one__maindish-left;
+        // background-image: url('/img/screen-one__maindish-left.png');
+        @include bg;
+        background-size: 100%;
+      }
+
+      .screen-one__maindish-right {
+        @include screen-one__maindish-right;
+        // background-image: url('/img/screen-one__maindish-right.png');
+        @include bg;
+        background-size: 100%;
+      }
+
+      .screen-one__dish,
+      .screen-one__dish-left,
+      .screen-one__dish-right {
+        @include position;
+
+        display: none;
+        height: 100%;
+        position: absolute;
+        background-size: 100%;
+        z-index: 3;
+      }
+
+      .screen-one__dish {
+        &.trash {
+          @include trash;
+          // background-image: url('/img/trash.png');
+          @include bg;
+          background-size: 100%;
+        }
+
+        &.cakes {
+          @include cakes;
+          // background-image: url('/img/cakes.png');
+          @include bg;
+          background-size: 100%;
+        }
+
+        &.waffles {
+          @include waffles;
+          // background-image: url('/img/waffles.png');
+          @include bg;
+          background-size: 100%;
+        }
+      }
+
+      .screen-one__dish-left {
+        &.trash {
+          @include trash-left;
+          // background-image: url('/img/trash-left.png');
+          @include bg;
+          background-size: 100%;
+        }
+
+        &.cakes {
+          @include cakes-left;
+          // background-image: url('/img/cakes-left.png');
+          @include bg;
+          background-size: 100%;
+        }
+
+        &.waffles {
+          @include waffles-left;
+          // background-image: url('/img/waffles-left.png');
+          @include bg;
+          background-size: 100%;
+        }
+      }
+
+      .screen-one__dish-right {
+        &.trash {
+          @include trash-right;
+          // background-image: url('/img/trash-right.png');
+          @include bg;
+          background-size: 100%;
+        }
+
+        &.cakes {
+          @include cakes-right;
+          // background-image: url('/img/cakes-right.png');
+          @include bg;
+          background-size: 100%;
+        }
+
+        &.waffles {
+          @include waffles-right;
+          // background-image: url('/img/waffles-right.png');\
+          @include bg;
+          background-size: 100%;
+        }
+      }
+    }
+
+    .screen-one__hint {
+      display: none;
+
+      .screen-one__cat-hand {
+        @include position;
+        @include screen-one__cat-hand;
+        // background-image: url('/img/screen-one__cat-hand.png');
+
+        position: absolute;
+        height: 100%;
+        background-size: 100%;
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        z-index: 3;
+      }
+
+      .screen-one__cat {
+        @include position;
+        @include screen-one__cat;
+        // background-image: url('/img/screen-one__cat.png');
+
+        position: absolute;
+        height: 100%;
+
+        background-size: 100%;
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        z-index: 3;
+      }
+
+      .appears {
+        animation: cat-appears 0.1s 1 both;
+      }
+
+      .hint-move {
+        transform-origin: 80% 90%;
+        animation: hint-cat 1s infinite linear;
+      }
+    }
+
+    .screen-one__win,
+    .screen-one__lose {
+      @include position;
+  
+      position: absolute;
+      height: 100vh;
+      overflow: hidden;
+      background-size: 100%;
+      z-index: 3;
+    }
+
+    .screen-one__win {
+      @include position;
+      @include win;
+      // background: url('/img/win.png');
+      @include bg;
+      background-size: 100%;
+
+      position: absolute;
+      height: 100vh;
+      overflow: hidden;
+      opacity: 0;
+      z-index: 5;
+    }
+
+    .screen-one__lose {
+      @include position;
+      @include lose;
+      // background: url('/img/lose.png');
+      @include bg;
+
+      position: absolute;
+      height: 100vh;
+      overflow: hidden;
+      opacity: 0;
+      z-index: 5;
+    }
+
+    .stamp-move {
+      animation-name: stamp;
+      animation-delay: 0.5s;
+      animation-duration: 0.4s;
+      animation-iteration-count: 1;
+      animation-fill-mode: both;
+    }
+  }
+
+  #screen-two {
+    @include position;
+    @include screen-two__repeat-bg;
+    // background: url('/img/screen-two__repeat-bg.png');
+    
+    position: fixed;
+    height: 100%;
+    background-position: top;
+    background-size: 100%;
+    background-repeat: repeat-y;
+    overflow: hidden;
+
+    .screen-two__bg {
+      @include screen-two;
+      // background: url('/img/screen-two.png');
+      @include bg;
+
+      max-width: 100%;
+      height: 100vh;
+      background-size: 100%;
+      z-index: 1;
+    }
+
+    .screen-two__logo-blitz {
+      @include position;
+      @include screen-two__logo-bingo;
+      // background: url('/img/screen-two__logo-bingo.png');
+      @include bg;
+
+      position: absolute;
+      height: 100vh;
+      overflow: hidden;
+      background-size: 100%;
+      z-index: 2;
+    }
+
+    .screen-two__table {
+      @include position;
+      @include screen-two__table;
+      // background: url('/img/screen-two__table.png');
+      @include bg;
+
+      position: absolute;
+      height: 100vh;
+      overflow: hidden;
+      background-size: 100%;
+      z-index: 3;
+    }
+
+    .logo-appears {
+      animation-name: screen-2-logo;
+      animation-delay: 0.5s;
+      animation-duration: 0.4s;
+      animation-iteration-count: 1;
+      animation-fill-mode: both;
+    }
+
+    .table-appears {
+      animation-name: screen-2-table;
+      animation-delay: 0.5s;
+      animation-duration: 0.4s;
+      animation-iteration-count: 1;
+      animation-fill-mode: both;
+    }
+
+    .screen-two__woman {
+      @include position;
+      @include screen-two__woman;
+      // background: url('/img/screen-two__woman.png');
+      @include bg;
+
+      position: absolute;
+      height: 100vh;
+      overflow: hidden;
+      background-size: 100%;
+      z-index: 2;
+    }
+
+    .screen-two__cat {
+      @include position;
+      @include screen-two__cat;
+      // background: url('/img/screen-two__cat.png');
+      @include bg;
+
+      position: absolute;
+      height: 100vh;
+      overflow: hidden;
+      background-size: 100%;
+      z-index: 4;
+    }
+
+    .woman-appears {
+      animation-name: screen-2-woman;
+      animation-delay: 1s;
+      animation-duration: 0.3s;
+      animation-iteration-count: 1;
+      animation-fill-mode: both;
+    }
+
+    .cat-appears {
+      animation-name: screen-2-cat;
+      animation-delay: 1s;
+      animation-duration: 0.3s;
+      animation-iteration-count: 1;
+      animation-fill-mode: both;
+    }
+
+    .push-btn-no {
+      @include position;
+      @include play-now;
+      @include bg;
+
+      position: absolute;
+      height: 100vh;
+      overflow: hidden;
+      background-size: 100%;
+      z-index: 5;
+    }
+
+    .push-btn {
+      @include position;
+      @include play-now-push;
+      @include bg;
+
+      position: absolute;
+      height: 100vh;
+      overflow: hidden;
+      background-size: 100%;
+      z-index: 5;
+    }
+
+    .screen-two__replay {
+      @include position;
+      @include replay;
+      // background: url('/img/replay.png');
+      @include bg;
+
+      position: absolute;
+      height: 100vh;
+      overflow: hidden;
+      background-size: 100%;
+      z-index: 5;
+    }
+
+    .play-now-appears {
+      animation: play-now .4s 1.6s 1 both;
+    }
+
+    .pulse {
+      animation: pulse-action 1s infinite linear;
+    }
+
+    .replay-appears {
+      animation: replay .4s 1.9s 1 both;
+    }
+
+    #clicker-play-now-btn, 
+    #clicker-replay-btn {
+      position: fixed;
+      transform: translateX(-50%) translateY(-50%);
+      z-index: 6;
+    }
+
+    #clicker-play-now-btn { 
+      bottom: calc(10% + 15px);
+      left: 50%;
+      width: calc(68% + 20px);
+      height: calc(12% + 10px );
+    }
+
+    #clicker-replay-btn {
+      bottom: calc(2% + 20px);
+      right: calc(1% - 25px);
+      width: calc(8% + 14px);
+      height: calc(6% + 49px);
+    }
+  }
+}
